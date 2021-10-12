@@ -2,39 +2,60 @@
 # @param num, your guess
 # @return -1 if my number is lower, 1 if my number is higher, otherwise return 0
 
-# def guess(num: int) -> int:
+def guess(num: int, val) -> int:
+    if num < val:
+        return -1
+    elif num > val:
+        return 1
+    else:
+        return 0
+
 
 class Solution:
-    def guessNumber(self, n: int) -> int:
+    def guessNumber(self, n: int, guess_val) -> int:
+        breakpoint()
         low = 0
         high = n
-        curr = -1
-        while curr != 0:
-            curr = guess(high)
-            if curr == 0:
-                return high
+        while low <= high:
+            mid = int((low+high)/2)
+            curr = guess(mid, guess_val)
             if curr == -1:
-                val = int((low+high)/2)
-                high = val
-            if curr == 1:
-                val = int((low+high)/2)
-                low = high
-                high = high+val
+                high = mid-1
+            elif curr == 1:
+                low = mid+1
+            else:
+                return mid
+
+
+pc = Solution()
+print(pc.guessNumber(10, 8))
+
+# class Solution:
+#     def guessNumber(self, n: int) -> int:
+#         low = 1
+#         high = n
+#         while True:
+#             mid = int((low+high)/2)
+#             curr = guess(mid)
+#             if curr == -1:
+#                 high = mid-1
+#             elif curr == 1:
+#                 low = mid+1
+#             else:
+#                 return mid
+
 
 # Recursion
-
-
-class Solution:
-    def guessNumber(self, n: int) -> int:
-        return self.guess_recursive(0, n)
-
-    def guess_recursive(self, low, high):
-        mid = int((low+high)/2)
-        curr = guess(mid)
-        if curr == -1:
-            high = mid-1
-        elif curr == 1:
-            low = mid+1
-        else:
-            return mid
-        return self.guess_recursive(low, high)
+# class Solution:
+#     def guessNumber(self, n: int) -> int:
+#         return self.guess_recursive(0, n)
+#
+#     def guess_recursive(self, low, high):
+#         mid = int((low+high)/2)
+#         curr = guess(mid)
+#         if curr== -1:
+#             return self.guess_recursive(low, mid-1)
+#         elif curr == 1:
+#             return self.guess_recursive(mid+1, high)
+#         else:
+#             return mid
