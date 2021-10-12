@@ -23,7 +23,7 @@ class Solution:
 
             return max(identify_word(board, word, ival, jval+1, idx),
                        identify_word(board, word, ival+1, jval, idx))
-        breakpoint()
+        # breakpoint()
         values = identify_word(board, word, 0, 0, 0)
         return values
 

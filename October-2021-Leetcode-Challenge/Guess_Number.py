@@ -20,3 +20,21 @@ class Solution:
                 val = int((low+high)/2)
                 low = high
                 high = high+val
+
+# Recursion
+
+
+class Solution:
+    def guessNumber(self, n: int) -> int:
+        return self.guess_recursive(0, n)
+
+    def guess_recursive(self, low, high):
+        mid = int((low+high)/2)
+        curr = guess(mid)
+        if curr == -1:
+            high = mid-1
+        elif curr == 1:
+            low = mid+1
+        else:
+            return mid
+        return self.guess_recursive(low, high)
