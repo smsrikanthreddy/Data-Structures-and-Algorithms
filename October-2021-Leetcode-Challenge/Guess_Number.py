@@ -13,7 +13,7 @@ def guess(num: int, val) -> int:
 
 class Solution:
     def guessNumber(self, n: int, guess_val) -> int:
-        breakpoint()
+        # breakpoint()
         low = 0
         high = n
         while low <= high:
