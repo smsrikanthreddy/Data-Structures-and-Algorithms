@@ -1,5 +1,7 @@
-# O(N)^3
+# To DO
 
+
+# O(N)^3
 # class Solution:
 #     def threeSum(self, nums):
 #         n = len(nums)
@@ -27,7 +29,7 @@
 #                         continue
 #         return result
 
-# O(N)^2 #space O(n)
+# O(N)^2 #space O(n)  Improve the solution to better
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
@@ -51,6 +53,39 @@ class Solution:
                 else:
                     k -= 1
         return [list(i) for i in Set]
+
+##
+# Better solutions
+
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()  # nlogn
+        n = len(nums)
+        rst = []
+        for i in range(n):
+            if i > 0 and nums[i] == nums[i - 1]:  # just make it faster..not chane the time complexity
+                continue
+
+            # use two pointers, since it been sorted
+            l, r = i+1, n-1
+            while l < r:
+                s = nums[i] + nums[l] + nums[r]
+                if s < 0:
+                    l += 1
+                elif s > 0:
+                    r -= 1
+                else:
+                    rst.append([nums[i], nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+                    # remove duplication
+                    while nums[l] == nums[l - 1] and l < r:
+                        l += 1
+                    # while nums[r] == nums[r + 1] and l < r: # even not necessary
+                    #    r-=1
+
+        return rst
 
 
 inp = [-1, 0, 1, 2, -1, -4]
