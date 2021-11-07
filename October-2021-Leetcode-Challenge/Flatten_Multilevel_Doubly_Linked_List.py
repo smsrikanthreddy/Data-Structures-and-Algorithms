@@ -10,6 +10,8 @@ class Node:
 
 
 class Solution:
+    ## TC - O(n)
+    ## SC - O(1)
     def flatten(self, head: 'Node') -> 'Node':
         curr = head
         while curr:
@@ -26,3 +28,5 @@ class Solution:
                 curr.child.prev = curr
                 curr.child = None
         return head
+
+# implement using stack
