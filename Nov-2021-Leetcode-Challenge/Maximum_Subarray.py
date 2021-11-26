@@ -16,6 +16,7 @@ class Solution:
         return max_so_far
 
         ## Method - 2
+        ## DP - O(N), O(N)
         def maxSubArray(self, nums: List[int]) -> int:
         max_so_far = nums[0]
         curr_max = 0
